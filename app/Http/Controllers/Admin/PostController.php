@@ -6,9 +6,12 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
+use App\Mail\NewPostCreated;
+use App\Mail\PostUpdateAdminMessage;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -79,12 +82,15 @@ class PostController extends Controller
         $new_post = Post::create($val_data);
         $new_post->tags()->attach($request->tags);
 
+        // visualizzazione anteprima
+        // return (new NewPostCreated($new_post))->render();
+        // invia email usendo istanza dell'utente nella request
 
+        Mail::to($request->user())->send(new NewPostCreated($new_post));
 
+        // invio ad email usando un email
 
-
-
-
+        // Mail::to($request->user)->send(new NewPostCreated($new_post));
 
         // redirect to a get route
         return redirect()->route('admin.posts.index')->with('message', 'Post Created Successfully');
@@ -118,7 +124,7 @@ class PostController extends Controller
             'tags' => Tag::all()
 
         ]; */
-        
+
 
         return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
@@ -152,7 +158,7 @@ class PostController extends Controller
                     'cover_image' => 'nullable|image|max:5000' /// massimo 5000kbs
                 ]
             );
-            
+
             // Prima di aggiornare la img elimino quella vecchia per recuperare spazio
             Storage::delete($post->cover_image);
             // salvanelfyle system e recupero il percorso salvandolo in una variavìbile
@@ -167,6 +173,13 @@ class PostController extends Controller
 
         // Syncs Tags
         $post->tags()->sync($request->tags);
+
+        //return new PostUpdateAdminMessage($post);
+
+        // return (new PostUpdateAdminMessage($post))->render();
+        
+         
+         Mail::to('admin@boolpress.it')->send(new PostUpdateAdminMessage($post)); 
 
         // redirect to get route
         return redirect()->route('admin.posts.index')->with('message', "$post->title updated successfully");
