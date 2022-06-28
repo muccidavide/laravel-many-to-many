@@ -5,7 +5,7 @@ dd($content)
 <div class="container">
   <h2 class="py-4">Create a new Post</h2>
   @include('partials.errors')
-  <form action="{{route('admin.posts.store')}}" method="post">
+  <form action="{{route('admin.posts.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
       <label for="title">Title</label>
@@ -15,7 +15,7 @@ dd($content)
     <!-- TODO: Change to input type file -->
     <div class="form-group">
       <label for="cover_image">cover_image</label>
-      <input type="text" name="cover_image" id="cover_image" class="form-control  @error('cover_image') is-invalid @enderror" placeholder="Learn php article" aria-describedby="cover_imageHelper" value="{{old('cover_image')}}">
+      <input type="file" name="cover_image" id="cover_image" class="form-control  @error('cover_image') is-invalid @enderror"  placeholder="Learn php article" aria-describedby="cover_imageHelper">
       <small id="cover_imageHelper" class="text-muted">Type the post cover_image</small>
     </div>
     <div class="form-group">

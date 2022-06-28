@@ -17,11 +17,11 @@
         <!-- TODO: Change to input type file -->
         <div class="d-flex">
             <div class="media pr-4">
-                <img class="shadow" width="150" src="{{$post->cover_image}}" alt="{{$post->title}}">
+                <img class="shadow" width="150" src="{{asset('storage/' . $post->cover_image)}}" alt="{{$post->title}}">
             </div>
             <div class="form-group">
                 <label for="cover_image">cover_image</label>
-                <input type="text" name="cover_image" id="cover_image" class="form-control  @error('cover_image') is-invalid @enderror" placeholder="Learn php article" aria-describedby="cover_imageHelper" value="{{old('cover_image', $post->cover_image)}}">
+                <input type="file" name="cover_image" id="cover_image" class="form-control  @error('cover_image') is-invalid @enderror" placeholder="Learn php article" aria-describedby="cover_imageHelper">
                 <small id="cover_imageHelper" class="text-muted">Type the post cover_image</small>
             </div>
         </div>
