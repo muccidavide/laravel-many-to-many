@@ -45,14 +45,33 @@
             </a>
           </li>
           <!-- Number Pagination -->
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li
+            class="page-item"
+            :class="postsResponse.current_page == 1 ? 'active' : ' '"
+          >
+            <a
+              class="page-link"
+              href="#"
+              @click.prevent="getAllPosts(1)"
+              >1</a
+            >
+          </li>
+          <li
+            class="page-item"
+            :class="postsResponse.current_page == 2 ? 'active' : ' '"
+          >
+            <a
+              class="page-link"
+              href="#"
+              @click.prevent="getAllPosts(2)"
+              >2</a
+            >
+          </li>
           <li
             class="page-item"
             v-if="postsResponse.current_page < postsResponse.last_page"
           >
-
-          <!-- Next Page -->
+            <!-- Next Page -->
             <a
               class="page-link"
               href="#"

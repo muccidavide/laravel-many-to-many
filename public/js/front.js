@@ -1978,6 +1978,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
   components: {},
@@ -37699,9 +37718,53 @@ var render = function () {
                   : _vm._e(),
               ]),
               _vm._v(" "),
-              _vm._m(0),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: _vm.postsResponse.current_page == 1 ? "active" : " ",
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          return _vm.getAllPosts(1)
+                        },
+                      },
+                    },
+                    [_vm._v("1")]
+                  ),
+                ]
+              ),
               _vm._v(" "),
-              _vm._m(1),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: _vm.postsResponse.current_page == 2 ? "active" : " ",
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          return _vm.getAllPosts(2)
+                        },
+                      },
+                    },
+                    [_vm._v("2")]
+                  ),
+                ]
+              ),
               _vm._v(" "),
               _vm.postsResponse.current_page < _vm.postsResponse.last_page
                 ? _c("li", { staticClass: "page-item" }, [
@@ -37736,28 +37799,7 @@ var render = function () {
     ),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "page-item" }, [
-      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-        _vm._v("1"),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "page-item" }, [
-      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-        _vm._v("2"),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
