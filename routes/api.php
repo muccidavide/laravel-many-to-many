@@ -48,6 +48,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $posts;
 });  */
 
+// scorciatoia con relazione
 /* Route::get('posts', function(){
 
     $posts = Post::with(['tags', 'category'])->get();
