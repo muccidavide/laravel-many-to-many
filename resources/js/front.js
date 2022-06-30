@@ -8,7 +8,9 @@
 
  window.Vue = require('vue');
  
+ import router from './router';
  import App from './views/App';
+
  
  /**
   * Next, we will create a fresh Vue application instance and attach it to
@@ -18,6 +20,7 @@
  
  const app = new Vue({
      el: '#root',
-     render: h => h(App)
+     render: h => h(App),
+     router,
  });
  
