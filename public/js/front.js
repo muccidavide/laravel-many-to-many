@@ -2230,6 +2230,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Posts",
   components: {},
@@ -38014,8 +38016,11 @@ var render = function () {
             return _c("div", { key: post.id, staticClass: "col-4" }, [
               _c("div", { staticClass: "card" }, [
                 _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: post.cover_image },
+                  staticClass: "img-fluid ",
+                  attrs: {
+                    src: _vm.asset("/storage/" + post.cover_image),
+                    alt: "cover of" + post.title,
+                  },
                 }),
                 _vm._v(" "),
                 _c("p", [
@@ -38146,30 +38151,26 @@ var render = function () {
         "div",
         { staticClass: "row row-cols-1 row-cols-sm-2 row-cols-md-3" },
         _vm._l(_vm.postsResponse.data, function (post) {
-          return _c(
-            "div",
-            { key: post.id, staticClass: "col" },
-            [
-              _c(
-                "router-link",
-                {
-                  attrs: { to: { name: "post", params: { slug: post.slug } } },
+          return _c("div", { key: post.id, staticClass: "col p-3" }, [
+            _c("div", { staticClass: "product card h-100" }, [
+              _c("img", {
+                staticClass: "img-fluid ",
+                attrs: {
+                  src: "/storage/" + post.cover_image,
+                  alt: "cover of" + post.title,
                 },
-                [_vm._v("Read More")]
-              ),
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "product card" }, [
-                _c("img", {
-                  attrs: { src: post.cover_image, alt: post.title },
-                }),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h3", [_vm._v(_vm._s(post.title))]),
                 _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("h3", [_vm._v(_vm._s(post.title))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(post.content))]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-footer" }, [
+                _c("p", [_vm._v(_vm._s(post.content))]),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "card-footer" },
+                [
                   post.category
                     ? _c("span", [
                         _c("strong", [_vm._v("Category: ")]),
@@ -38196,11 +38197,21 @@ var render = function () {
                         ),
                       ])
                     : _vm._e(),
-                ]),
-              ]),
-            ],
-            1
-          )
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      attrs: {
+                        to: { name: "post", params: { slug: post.slug } },
+                      },
+                    },
+                    [_vm._v("Read More")]
+                  ),
+                ],
+                1
+              ),
+            ]),
+          ])
         }),
         0
       ),

@@ -48,9 +48,6 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-
-
-
         /* TODO: Validate Tags */
         // Validate data
         $val_data = $request->validated();
@@ -58,9 +55,8 @@ class PostController extends Controller
         $slug = Post::generateSlug($request->title);
         $val_data['slug'] = $slug;
 
-
-
         // Verificare se la richiesta contiene un file
+
         // ddd(array_key_exists('cover_image', $request->all()))); // opzione 1 (Laravel)
         // ddd($request->hasFile('cover_image'));
         if ($request->hasFile('cover_image')) { // opzione 2 (PLain PHP)
@@ -81,6 +77,7 @@ class PostController extends Controller
         // create the resource
         $new_post = Post::create($val_data);
         $new_post->tags()->attach($request->tags);
+        dd($new_post);
 
         // visualizzazione anteprima
         // return (new NewPostCreated($new_post))->render();
@@ -138,16 +135,12 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        //dd($request->all());
-
         // validate data
         $val_data = $request->validated();
-        //dd($val_data);
-
 
         // Gererate the slug
         $slug = Post::generateSlug($request->title);
-        //dd($slug);
+        
         $val_data['slug'] = $slug;
 
         if ($request->hasFile('cover_image')) { // opzione 2 (PLain PHP)
@@ -164,6 +157,7 @@ class PostController extends Controller
             // salvanelfyle system e recupero il percorso salvandolo in una variavìbile
             $path = Storage::put('post_images', $request->cover_image);
             // recuper percorso 
+
             $val_data['cover_image'] = $path;
             // passo il percoso all'array di dati validati per salvare i file nello sorage
         };
@@ -174,12 +168,14 @@ class PostController extends Controller
         // Syncs Tags
         $post->tags()->sync($request->tags);
 
+        //dd($post);
+
         //return new PostUpdateAdminMessage($post);
 
         // return (new PostUpdateAdminMessage($post))->render();
-        
-         
-         Mail::to('admin@boolpress.it')->send(new PostUpdateAdminMessage($post)); 
+
+
+        Mail::to('admin@boolpress.it')->send(new PostUpdateAdminMessage($post));
 
         // redirect to get route
         return redirect()->route('admin.posts.index')->with('message', "$post->title updated successfully");

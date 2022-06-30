@@ -28,7 +28,8 @@
             <tr>
                 <td scope="row">{{$post->id}}</td>
                 <td>{{$post->title}}</td>
-                <td><img class="img-fluid " src="{{asset('storage/' . $post->cover_image)}}" alt="cover of {{$post->title}}"></td>
+               
+                <td><img class="img-fluid " src="{{ asset('/storage/' . $post->cover_image )}}" alt="cover of {{$post->title}}"></td>
                 <td>{{Str::limit($post->content,150)}}</td>
                 <td>
                     <p>{{(is_null($post->category))? 'Uncategorized' : $post->category->name}}</p>

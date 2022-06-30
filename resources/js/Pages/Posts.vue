@@ -6,10 +6,11 @@
 
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-        <div class="col" v-for="post in postsResponse.data" :key="post.id">
-           <router-link :to="{ name:'post', params:  { slug : post.slug }  }">Read More</router-link>
-          <div class="product card">
-            <img :src="post.cover_image" :alt="post.title" />
+        <div class="col p-3" v-for="post in postsResponse.data" :key="post.id">
+         
+          <div class="product card h-100">
+            
+            <img class="img-fluid " :src="'/storage/' + post.cover_image "  :alt="'cover of' + post.title">
             <div class="card-body">
               <h3>{{ post.title }}</h3>
               <p>{{ post.content }}</p>
@@ -28,6 +29,7 @@
                 </ul>
                 
               </div>
+                <router-link :to="{ name:'post', params:  { slug : post.slug }  }">Read More</router-link>
             </div>
           </div>
         </div>

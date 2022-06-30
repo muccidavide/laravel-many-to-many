@@ -20,7 +20,7 @@
             <div class="col-4" v-for="post in posts" :key="post.id">
                 <div class="card">
                     <!-- <img class="img-fluid" :src="'/storage/' + post.cover_image" alt=""> -->
-                    <img class="img-fluid" :src="post.cover_image">
+                    <img class="img-fluid " :src=" asset('/storage/' + post.cover_image )" :alt="'cover of' +  post.title ">
                     <p>
                         {{ post.content + '...' }}
                     </p>
