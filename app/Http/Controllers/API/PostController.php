@@ -13,4 +13,12 @@ class PostController extends Controller
         $posts = Post::with(['tags', 'category'])->orderByDesc('id')->paginate(9);
         return $posts;
     }
+
+    public function show($slug)
+    {
+        
+        $post = Post::with(['tags', 'category'])->where('slug', $slug)->first();
+        
+        return $post;
+    }
 }

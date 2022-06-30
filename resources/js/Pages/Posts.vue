@@ -7,6 +7,7 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
         <div class="col" v-for="post in postsResponse.data" :key="post.id">
+           <router-link :to="{ name:'post', params:  { slug : post.slug }  }">Read More</router-link>
           <div class="product card">
             <img :src="post.cover_image" :alt="post.title" />
             <div class="card-body">
@@ -17,6 +18,7 @@
               <span v-if="post.category"
                 ><strong>Category: </strong>{{ post.category.name }}</span
               >
+             
               <div class="tags" v-if="post.tags.length > 0">
                 <strong>Tags:</strong>
                 <ul>
@@ -24,6 +26,7 @@
                     {{ tag.name }}
                   </li>
                 </ul>
+                
               </div>
             </div>
           </div>
@@ -110,9 +113,10 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response);
+  
           this.posts = response.data.data;
           this.postsResponse = response.data;
+          console.log(this.posts);
         })
         .catch((e) => {
           console.error(e);
@@ -122,7 +126,7 @@ export default {
       axios
         .get("api/categories")
         .then((response) => {
-          console.log(response);
+          
           this.categories = response.data;
         })
         .catch((e) => {

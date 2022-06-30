@@ -57,4 +57,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // scorciatoia con relazione + paginazione
 Route::get('posts','API\PostController@index'); 
+Route::get('posts/{post:slug}','API\PostController@show'); 
+
 Route::get('categories', 'API\PostController@index');

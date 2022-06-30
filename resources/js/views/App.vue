@@ -7,7 +7,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                  <li class="nav-item mx-2" v-for="item in menu_items" :key="item">
+                  <li class="nav-item mx-2" v-for="item in menu_items" :key="item.id">
                     <router-link :to="{ name: item.route_name }">{{item.route_text}}</router-link>
                   </li>
 
