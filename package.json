@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "vue-laravel-csrf": "^1.0.0",
         "vue-router": "^3.5.4"
     }
 }

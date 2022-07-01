@@ -13,6 +13,7 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import Posts from './Pages/Posts';
 import Post from './Pages/Post';
+import Contacts from './Pages/Contacts';
 import NotFound from './Pages/NotFound';
 
 /* const Foo = { template: '<div>foo</div>' }
@@ -29,6 +30,7 @@ const routes = [
   { path: '/about', component: About , name:'about' },
   { path: '/posts', component: Posts , name:'posts' },
   { path: '/posts/:slug', component: Post , name:'post' },
+  { path: '/contacts', component: Contacts , name:'contacts' },
   { path: '/*', component: NotFound , name:'not-found' },
 ]
 

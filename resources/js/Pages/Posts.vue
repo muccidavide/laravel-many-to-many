@@ -113,11 +113,9 @@ export default {
             page: postPage,
           },
         })
-        .then((response) => {
-  
+        .then((response) => {  
           this.posts = response.data.data;
           this.postsResponse = response.data;
-          console.log(this.posts);
         })
         .catch((e) => {
           console.error(e);
@@ -127,7 +125,6 @@ export default {
       axios
         .get("api/categories")
         .then((response) => {
-          console.log(response);
           this.categories = response.data;
         })
         .catch((e) => {
