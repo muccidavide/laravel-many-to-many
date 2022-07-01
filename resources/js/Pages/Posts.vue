@@ -1,8 +1,7 @@
 <template>
 
   <div>
-    <h1>Posts</h1>
-    <h1 class="text-center">Work In progress</h1>
+    <h1 class="text-center">Posts</h1>
 
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
@@ -128,7 +127,7 @@ export default {
       axios
         .get("api/categories")
         .then((response) => {
-          
+          console.log(response);
           this.categories = response.data;
         })
         .catch((e) => {
